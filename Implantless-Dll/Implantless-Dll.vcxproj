@@ -152,9 +152,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Implantless-Dll-Main.h" />
+    <ClInclude Include="NTLM.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Implantless-Dll-Main.cpp" />
+    <ClCompile Include="NTLM.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,7 @@
-// dllmain.cpp : Defines the entry point for the DLL application.
+// Patrick Sacchet (@pjsacchet)
+// Verison 1.0.
+// Implantless-DLL-Main.cpp : Handles initialization of our handle and initial connection stuff 
+
 #include "Implantless-Dll-Main.h"
 
 BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
@@ -12,4 +15,19 @@ BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpRese
         break;
     }
     return TRUE;
+}
+
+
+/* Our initial 'startup' function which will initialize our handle and perform initial socket work to port 135 to talk to the target's RPC endpoint mapper 
+    or subsequent calls, the handle will serve to store the highport for the service/object we need to talk to 
+*/
+BOOL HandleImplantlessStartup()
+{
+    BOOL status = SUCCESS;
+
+    
+
+
+cleanup:
+    return status;
 }
