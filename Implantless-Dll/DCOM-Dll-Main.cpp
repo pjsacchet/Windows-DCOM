@@ -2,7 +2,7 @@
 // Verison 1.0.
 // Implantless-DLL-Main.cpp : Handles initialization of our handle and initial connection stuff 
 
-#include "Implantless-Dll-Main.h"
+#include "DCOM-Dll-Main.h"
 
 BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
