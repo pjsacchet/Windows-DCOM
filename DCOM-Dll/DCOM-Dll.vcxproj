@@ -152,10 +152,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DCOM-Dll-Connect.h" />
     <ClInclude Include="DCOM-Dll-Main.h" />
     <ClInclude Include="DCOM-Dll-NTLM.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DCOM-Dll-Connect.cpp" />
     <ClCompile Include="DCOM-Dll-Main.cpp" />
     <ClCompile Include="DCOM-Dll-NTLM.cpp" />
   </ItemGroup>
