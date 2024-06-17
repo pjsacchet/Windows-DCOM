@@ -21,7 +21,7 @@ BOOL APIENTRY DllMain( HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpRese
 /* Our initial 'startup' function which will initialize our handle and perform initial socket work to port 135 to talk to the target's RPC endpoint mapper 
     or subsequent calls, the handle will serve to store the highport for the service/object we need to talk to 
 */
-BOOL HandleImplantlessStartup()
+BOOL handleImplantlessStartup()
 {
     BOOL status = SUCCESS;
 
