@@ -1,6 +1,6 @@
 # Ignore build files
-Implantless-Dll/x64
-Implantless-Dll/Debug
+DCOM-Dll/x64
+DCOM-Dll/Debug
 Debug/
 x64/
 Release/
@@ -8,8 +8,8 @@ __pycache__/
 TestFiles/
 
 # Ignore irrelevant studio files
-Implantless-Dll/.vs
-Implantless-Exe/.vs
+DCOM-Dll/.vs
+DCOM-Exe/.vs
 *.sln
 *.exe
 *.dll
