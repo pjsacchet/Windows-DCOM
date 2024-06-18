@@ -5,6 +5,7 @@
 // Windows Header Files
 #include <windows.h>
 #include <WinSock2.h>
+#include <rpcdce.h>
 
 #define SUCCESS 1
 #define FAILURE 0
