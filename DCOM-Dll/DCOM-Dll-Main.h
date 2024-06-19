@@ -4,9 +4,14 @@
 #include <windows.h>
 #include <winsock.h>
 #include <rpcdce.h>
+#include <stdio.h>
+
+#pragma comment(lib, "rpcrt4.lib") 
 
 #define SUCCESS 1
 #define FAILURE 0
+
+const INT DEFAULT_BUF_LEN = 512;
 
 // Have a struct for each auth type we support
 
