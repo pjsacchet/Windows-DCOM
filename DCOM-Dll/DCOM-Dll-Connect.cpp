@@ -12,7 +12,7 @@ BOOL handleImplantlessStartup()
 {
     BOOL status = SUCCESS;
 
-
+   
 
 
 cleanup:
