@@ -3,4 +3,4 @@
 #include "DCOM-Dll-Main.h"
 
 
-BOOL handleNTLMLogonPlainText(char* username, char* password, char* targetAddress);
+BOOL handleNTLMLogonPlainText(unsigned char* username, unsigned char* password, char* targetAddress, char* princName, unsigned char* domain);
