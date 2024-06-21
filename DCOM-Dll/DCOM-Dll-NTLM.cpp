@@ -5,12 +5,13 @@
 #include "DCOM-Dll-NTLM.h"
 
 
-BOOL handleNTLMLogonPlainText(unsigned char* username, unsigned char* password, char* targetAddress, char* princName, unsigned char* domain)
+BOOL handleNTLMLogonPlainText(unsigned char* username, unsigned char* password, unsigned char* targetAddress, unsigned char* princName, unsigned char* domain)
 {
 	BOOL status = TRUE;
 	CHAR msgBuf[DEFAULT_BUF_LEN];
 	RPC_BINDING_HANDLE bind;
 	RPC_CSTR serverPrincName;
+	RPC_IF_HANDLE interfaceHandle;
 	SEC_WINNT_AUTH_IDENTITY_A identityHandle;
 	RPC_BINDING_HANDLE_TEMPLATE_V1_A bindingTemplate;
 
@@ -58,10 +59,30 @@ BOOL handleNTLMLogonPlainText(unsigned char* username, unsigned char* password, 
 		goto cleanup;
 	}
 
+	/* Standard interface: details, ver. 1.0,
+     GUID={0x55449658,0x4321,0x1234,{0x43,0x21,0x98,0x76,0x54,0x32,0x1C,0xBA}} */
+
+	static const RPC_CLIENT_INTERFACE details___RpcClientInterface =
+	{
+	sizeof(RPC_CLIENT_INTERFACE),
+		{{0x55449658, 0x4321, 0x1234, { 0x43,0x21,0x98,0x76,0x54,0x32,0x1C,0xBA }}, { 1,0 }},
+		{{0x8A885D04, 0x1CEB, 0x11C9, { 0x9F,0xE8,0x08,0x00,0x2B,0x10,0x48,0x60 }}, { 2,0 }},
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	};
+
+	// Need object exporter interface for this?
+
+
+	
 
 
 	// Put it all together!
-	// status = RpcBindingBind
+	status = RpcBindingBind(NULL, &bind, &interfaceHandle);
 
 
 
