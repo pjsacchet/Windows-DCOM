@@ -156,18 +156,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DCOM-Dll-RPC.h" />
     <ClInclude Include="DCOM-Dll-Main.h" />
     <ClInclude Include="DCOM-Dll-NTLM.h" />
     <ClInclude Include="DCOM-Dll-Kerberos.h" />
-    <ClInclude Include="DCOM-Dll-DCOM.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DCOM-Dll-RPC.cpp" />
     <ClCompile Include="DCOM-Dll-Main.cpp" />
     <ClCompile Include="DCOM-Dll-NTLM.cpp" />
     <ClCompile Include="DCOM-Dll-Kerberos.cpp" />
-    <ClCompile Include="DCOM-Dll-DCOM.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />
