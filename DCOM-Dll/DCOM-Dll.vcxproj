@@ -157,13 +157,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DCOM-Dll-Main.h" />
-    <ClInclude Include="DCOM-Dll-NTLM.h" />
-    <ClInclude Include="DCOM-Dll-Kerberos.h" />
+    <ClInclude Include="DCOM-Dll-WinRM.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DCOM-Dll-Main.cpp" />
-    <ClCompile Include="DCOM-Dll-NTLM.cpp" />
-    <ClCompile Include="DCOM-Dll-Kerberos.cpp" />
+    <ClCompile Include="DCOM-Dll-WinRM.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />
