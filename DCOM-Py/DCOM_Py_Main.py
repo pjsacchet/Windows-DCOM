@@ -13,6 +13,11 @@ def getDll():
 def main():
     dcom_functions = getDll()
     
+    # Parse input from user 
+    
+
+
+
     print(dcom_functions.handleImplantlessStartup())
 
 

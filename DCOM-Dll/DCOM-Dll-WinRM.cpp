@@ -36,11 +36,11 @@ BOOL handleWinRMNTLMInitialize(wchar_t* username, wchar_t* password,  wchar_t* t
 
 	// Setup target info specific to NTLM
 	copyHandle->winrm.target.authIdentity.User = (USHORT*)username;
-	// user length
+	copyHandle->winrm.target.authIdentity.UserLength = wcslen(username);
 	copyHandle->winrm.target.authIdentity.Domain = (USHORT*)domain;
-	// domain length
+	copyHandle->winrm.target.authIdentity.DomainLength = wcslen(domain);
 	copyHandle->winrm.target.authIdentity.Password = (USHORT*)password;
-	// password length
+	copyHandle->winrm.target.authIdentity.PasswordLength = wcslen(password);
 
 	copyHandle->winrm.target.authInfo.dwAuthnSvc = RPC_C_AUTHN_WINNT;
 	copyHandle->winrm.target.authInfo.dwAuthzSvc = RPC_C_AUTHZ_NONE;
@@ -48,24 +48,20 @@ BOOL handleWinRMNTLMInitialize(wchar_t* username, wchar_t* password,  wchar_t* t
 	copyHandle->winrm.target.authInfo.dwAuthnLevel = RPC_C_AUTHN_LEVEL_PKT_PRIVACY;
 	copyHandle->winrm.target.authInfo.dwImpersonationLevel = RPC_C_IMP_LEVEL_IMPERSONATE;
 
-
 	copyHandle->winrm.target.serverInfo.pwszName = princName;
 
-
-
-
+	// Store the IID we want in our MULTI_QI array
+	results[0].pIID = &IID_IWSManEx;
 
 	result = CoCreateInstanceEx(CLSID_WSMAN, NULL, CLSCTX_REMOTE_SERVER, &copyHandle->winrm.target.serverInfo, 1, results);
 	if (result != S_OK)
 	{
-		// sad
-
+		sprintf_s(msgBuf, "DCOM-Dll-WinRM::handleWinRMNTLMInitialize - Failure recevied from CoCreateInstanceEx %d\n", result);
+		OutputDebugStringA(msgBuf);
 		status = FAILURE;
 	}
 
-
 	*handle = copyHandle;
-
 
 
 cleanup:

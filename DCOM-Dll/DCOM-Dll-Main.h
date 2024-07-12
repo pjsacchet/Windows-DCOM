@@ -31,7 +31,6 @@ typedef struct targetInfo
 typedef struct WinRM
 {
 	targetInfo target;
-	
 };
 
 
