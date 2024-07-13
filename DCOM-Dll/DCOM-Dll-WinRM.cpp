@@ -12,6 +12,23 @@ BOOL handleWinRMNTLMInitialize(wchar_t* username, wchar_t* password,  wchar_t* t
 	char msgBuf[DEFAULT_BUF_LEN];
 	ImplantlessHandle* copyHandle = NULL;
 	MULTI_QI results[1] = { 0 };
+	long connectionFlags = 0;
+	BSTR connectionString = SysAllocString(L"https://");
+
+	// Build our BSTR with what the user gave us 
+	if (!SysReAllocStringLen(&connectionString, targetAddress, wcslen(targetAddress)));
+	{
+		status = FAILURE;
+		OutputDebugStringA("DCOM - Dll - WinRM::handleWinRMNTLMInitialize - Failure recevied from SysReAllocStringLen\n");
+		goto cleanup;
+	}
+
+	if (!SysReAllocStringLen(&connectionString, L"\wsman", wcslen(L"\wsman")));
+	{
+		status = FAILURE;
+		OutputDebugStringA("DCOM - Dll - WinRM::handleWinRMNTLMInitialize - Failure recevied from SysReAllocStringLen\n");
+		goto cleanup;
+	}
 
 	// Start COM library 
 	result = CoInitializeEx(NULL, COINIT_MULTITHREADED);
@@ -53,6 +70,7 @@ BOOL handleWinRMNTLMInitialize(wchar_t* username, wchar_t* password,  wchar_t* t
 	// Store the IID we want in our MULTI_QI array
 	results[0].pIID = &IID_IWSManEx;
 
+	// Create our object? Do we need to or can we just call into CreateSession...
 	result = CoCreateInstanceEx(CLSID_WSMAN, NULL, CLSCTX_REMOTE_SERVER, &copyHandle->winrm.target.serverInfo, 1, results);
 	if (result != S_OK)
 	{
@@ -60,6 +78,13 @@ BOOL handleWinRMNTLMInitialize(wchar_t* username, wchar_t* password,  wchar_t* t
 		OutputDebugStringA(msgBuf);
 		status = FAILURE;
 	}
+
+	// Should get back an interface pointer for IWSMan, now let's try to create our session with what the user gave us 
+	//status = IWSMan::CreateSession()
+
+	// Get back an interface pointer to IWSManSession
+
+
 
 	*handle = copyHandle;
 

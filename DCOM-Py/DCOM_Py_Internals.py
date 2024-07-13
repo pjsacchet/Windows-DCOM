@@ -38,12 +38,13 @@ typedef struct _COAUTHINFO
     DWORD dwImpersonationLevel;
     COAUTHIDENTITY *pAuthIdentityData;
     DWORD dwCapabilities;
-    } 	COAUTHINFO;'''
+    } 	COAUTHINFO;
+'''
 class COAUTHINFO(Structure):
     __fields__ = [
         ("dwAuthnSvc", c_ulong),
         ("dwAuthzSvc", c_ulong),
-        ("pwszServerPrincName", POINTER(c_short)),
+        ("pwszServerPrincName", c_wchar_p),
         ("dwAuthnLevel", c_ulong),
         ("dwImpersonationLevel", c_ulong),
         ("pAuthIdentityData", POINTER(COAUTHIDENTITY)),
@@ -58,10 +59,30 @@ typedef struct _COSERVERINFO
     LPWSTR pwszName;
     COAUTHINFO *pAuthInfo;
     DWORD dwReserved2;
-    } 	COSERVERINFO;'''
+    } 	COSERVERINFO;
+'''
 class COSERVERINFO(Structure):
     __fields__ = [
+        ("dwReserved1", c_ulong),
+        ("pwszName", c_wchar_p),
+        ("pAuthInfo", POINTER(COAUTHINFO)),
+        ("dwReserved2", c_ulong)
+    ]
 
+# Struct for targetInfo
+'''
+typedef struct targetInfo
+{
+	COSERVERINFO serverInfo;
+	COAUTHINFO authInfo;
+	COAUTHIDENTITY authIdentity; 
+};
+'''
+class targetInfo(Structure):
+    __fields__ = [
+        ("serverInfo", COSERVERINFO),
+        ("authInfo", COAUTHINFO),
+        ("authIdentity", COAUTHIDENTITY)
     ]
 
 # Struct for WinRM 
@@ -72,7 +93,7 @@ typedef struct WinRM
 };'''
 class WinRM(Structure):
     __fields__ = [
-
+        ("target", targetInfo)
     ]
 
 # Struct for our ImplantlessHandle 
@@ -80,8 +101,9 @@ class WinRM(Structure):
 typedef struct ImplantlessHandle
 {
 	WinRM winrm;
-}PImplantlessHandle;'''
+}PImplantlessHandle;
+'''
 class ImplantlessHandle(Structure):
     __fields__ = [
-
+        ("winrm", WinRM)
     ]
