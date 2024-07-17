@@ -70,6 +70,9 @@ BOOL handleWinRMNTLMInitialize(wchar_t* username, wchar_t* password,  wchar_t* t
 	// Store the IID we want in our MULTI_QI array
 	results[0].pIID = &IID_IWSManEx;
 
+	// We're makignthe object locally to then connect to target... is this really DCOM
+		// could use provider host?
+
 	// Create our object? Do we need to or can we just call into CreateSession...
 	result = CoCreateInstanceEx(CLSID_WSMAN, NULL, CLSCTX_REMOTE_SERVER, &copyHandle->winrm.target.serverInfo, 1, results);
 	if (result != S_OK)

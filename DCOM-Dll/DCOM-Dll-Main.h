@@ -17,7 +17,6 @@ const INT DEFAULT_BUF_LEN = 512;
 // Maybe split these up by service we're using...
 	// WinRM
 	// SMB?
-	// Regular Transaction Context?
 
 
 typedef struct targetInfo
