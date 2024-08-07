@@ -32,10 +32,14 @@ typedef struct WinRM
 	targetInfo target;
 };
 
-
+typedef struct Update
+{
+	targetInfo target;
+};
 
 // Define our own 'handle' we'll be passing around this tool and updating as needed
 typedef struct ImplantlessHandle
-{
+{ 
 	WinRM winrm;
+	Update update;
 }PImplantlessHandle;

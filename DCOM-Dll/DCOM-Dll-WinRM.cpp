@@ -68,7 +68,7 @@ BOOL handleWinRMNTLMInitialize(wchar_t* username, wchar_t* password,  wchar_t* t
 	copyHandle->winrm.target.serverInfo.pwszName = princName;
 
 	// Store the IID we want in our MULTI_QI array
-	results[0].pIID = &IID_IWSManEx;
+	//results[0].pIID = &IID_IWSManEx;
 
 	// We're makignthe object locally to then connect to target... is this really DCOM
 		// could use provider host?

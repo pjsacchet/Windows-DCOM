@@ -158,10 +158,12 @@
   <ItemGroup>
     <ClInclude Include="DCOM-Dll-Main.h" />
     <ClInclude Include="DCOM-Dll-WinRM.h" />
+    <ClInclude Include="DCOM-Dll-UpdateService.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DCOM-Dll-Main.cpp" />
     <ClCompile Include="DCOM-Dll-WinRM.cpp" />
+    <ClCompile Include="DCOM-Dll-UpdateService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />

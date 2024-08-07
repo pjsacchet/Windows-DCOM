@@ -1,0 +1,13 @@
+#pragma once
+
+
+#include "DCOM-Dll-Main.h"
+
+#include <Wuapi.h>
+
+
+GUID CLSID_UpdateAgent = { 0xb366debe,0x645b,0x43a5,{0xb8,0x65,0xdd,0xd8,0x2c,0x34,0x54,0x92} };
+//GUID IID_IUpdateSession3 = { 0x918efd1e,0xb5d8,0x4c90,{0x85,0x40,0xae,0xb9,0xbd,0xc5,0x6f,0x9d} };
+
+
+BOOL handleUpdateNTLMInitialize(wchar_t* username, wchar_t* password, wchar_t* targetAddress, wchar_t* princName, wchar_t* domain, ImplantlessHandle** handle);
